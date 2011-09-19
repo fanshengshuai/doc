@@ -1,0 +1,26 @@
+port            = 3300
+socket          = /tmp/mysql0.sock
+pid-file        = /data/mysql0/localhost.localdomain0.pid
+datadir         = /data/mysql0
+#log            = /data/mysql0/mysql0.log
+user            = mysql
+skip-locking
+skip-name-resolve
+#skip-bdb
+skip-innodb
+key_buffer = 128M
+max_allowed_packet = 1M
+table_cache = 1024
+max_user_connections=300
+sort_buffer_size = 4M
+read_buffer_size = 2M
+read_rnd_buffer_size = 1M
+myisam_sort_buffer_size = 32M
+thread_cache_size = 16
+query_cache_size = 32M
+thread_concurrency = 8
+#skip-networking
+wait_timeout=8
+max_connections=768
+max_connect_errors = 10000000
+#log-bin=mysql0-bin
