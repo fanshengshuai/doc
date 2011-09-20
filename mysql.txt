@@ -1,3 +1,31 @@
+使用show status命令
+
+含义如下:
+aborted_clients 客户端非法中断连接次数
+aborted_connects 连接mysql失败次数
+com_xxx xxx命令执行次数,有很多条
+connections 连接mysql的数量
+Created_tmp_disk_tables 在磁盘上创建的临时表
+Created_tmp_tables 在内存里创建的临时表
+
+Created_tmp_files 临时文件数
+Key_read_requests The number of requests to read a key block from the cache
+Key_reads The number of physical reads of a key block from disk
+Max_used_connections 同时使用的连接数
+Open_tables 开放的表
+Open_files 开放的文件
+Opened_tables 打开的表
+Questions 提交到server的查询数
+Sort_merge_passes 如果这个值很大,应该增加my.cnf中的sort_buffer值
+Uptime 服务器已经工作的秒数
+提升性能的建议:
+1.如果opened_tables太大,应该把my.cnf中的table_cache变大
+2.如果Key_reads太大,则应该把my.cnf中key_buffer_size变大.可以用Key_reads/Key_read_requests计算出cache失败率
+3.如果Handler_read_rnd太大,则你写的SQL语句里很多查询都是要扫描整个表,而没有发挥索引的键的作用
+4.如果Threads_created太大,就要增加my.cnf中thread_cache_size的值.可以用Threads_created/Connections计算cache命中率
+5.如果Created_tmp_disk_tables太大,就要增加my.cnf中tmp_table_size的值,用基于内存的临时表代替基于磁盘的
+
+
 port            = 3300
 socket          = /tmp/mysql0.sock
 pid-file        = /data/mysql0/localhost.localdomain0.pid
