@@ -1,0 +1,4 @@
+./configure --prefix=/usr/local/nginx-1.0.6 --with-md5=/usr/lib --with-sha1=/usr/lib --with-cc-opt="-I /usr/include/pcre -I /usr/local/ssl/include/openssl" --with-http_ssl_module 
+
+make -j10
+make install
