@@ -1,0 +1,6 @@
+curl -O http://www.webdav.org/neon/neon-0.29.6.tar.gz
+tar xf neon-0.29.6.tar.gz
+cd neon-0.29.6
+./configure --prefix=/usr/local/neon-0.29.6 --with-ssl
+
+./configure --prefix=/usr/local/subversion-1.7.0-rc3 --with-ssl --with-sqlite=/usr/local/sqlite-autoconf-3070800/ --with-openssl --with-neon=/usr/local/neon-0.29.6/
