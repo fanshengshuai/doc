@@ -1,39 +1,43 @@
+# 初始化远程仓库
+git init --bare
+
+# 设置可以 push
+git config receive.denycurrentbranch ignore
+
+# 用户设置
+git config user.name 范圣帅
+git config user.email fanshengshuai@gmail.com
+
+# 客户端
+git remote add -f origin fanshengshuai@xxx.xxx.xxx:/www/
+
+git config branch.master.remote origin
+
+# 删除远程地址
+git remote rm origin
+
+# 恢复
+git -reset --hard
+
+# 增加远程地址
+git remote add origin ssh://git@dev.lemote.com/rt4ls.git
+
+# 把本地仓库提交到远程仓库的master分支中
+git push ssh://git@xxx.com/rt4ls.git master
+git push origin master
+
 Git 和Github初次使用
 http://apps.hi.baidu.com/share/detail/42643392
 
-git push相关
-$ git push ssh://git@dev.lemote.com/rt4ls.git master // 把本地仓库提交到远程仓库的master分支中
+# 提交本地test分支作为远程的master分支
+git push origin test:master
 
-$ git remote add origin ssh://git@dev.lemote.com/rt4ls.git
-$ git push origin master 
-
-这两个操作是等价的，第二个操作的第一行的意思是添加一个标记，让origin指向ssh://git@dev.lemote.com/rt4ls.git，也就是说你操 作origin的时候，实际上就是在操作ssh://git@dev.lemote.com/rt4ls.git。origin在这里完全可以理解为后者 的别名。
-
-    需要说明的是，默认情况下这条语句等价于提交本地的master仓库到远程仓库，并作为远程的master分支。
-    如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，那么可以这么做。
-
-$ git push origin test:master         // 提交本地test分支作为远程的master分支
-$ git push origin test:test              // 提交本地test分支作为远程的test分支
+# 提交本地test分支作为远程的test分支
+git push origin test:test
 
 如果想删除远程的分支呢？类似于上面，如果:左边的分支为空，那么将删除:右边的远程的分支。
 
-$ git push origin :test              // 刚提交到远程的test将被删除，但是本地还会保存的，不用担心
+# 刚提交到远程的test将被删除，但是本地还会保存的，不用担心
+git push origin :test
 
-Git: push 出错的解决 master -> master (branch is currently checked out)
-在使用Git Push代码到数据仓库时，提示如下错误:
-[remote rejected] master -> master (branch is currently checked out)
-remote: error: refusing to update checked out branch: refs/heads/master
-remote: error: By default, updating the current branch in a non-bare repository
-remote: error: is denied, because it will make the index and work tree inconsistent
-remote: error: with what you pushed, and will require 'git reset --hard' to match
-remote: error: the work tree to HEAD.
-remote: error:
-...
-...
-...
-这是由于git默认拒绝了push操作，需要进行设置，修改.git/config添加如下代码：
-    [receive]
-    denyCurrentBranch = ignore
- 
-在初始化远程仓库时最好使用 git --bare init   而不要使用：git init
-   如果使用了git init初始化，则远程仓库的目录下，也包含work tree，当本地仓库向远程仓库push时,   如果远程仓库正在push的分支上（如果当时不在push的分支，就没有问题）, 那么push后的结果不会反应在work tree上,  也即在远程仓库的目录下对应的文件还是之前的内容，必须得使用git reset --hard才能看到push后的内容.
+在初始化远程仓库时最好使用 git --bare init   而不要使用：git init，如果使用了git init初始化，则远程仓库的目录下，也包含work tree，当本地仓库向远程仓库push时,   如果远程仓库正在push的分支上（如果当时不在push的分支，就没有问题）, 那么push后的结果不会反应在work tree上,  也即在远程仓库的目录下对应的文件还是之前的内容，必须得使用git reset --hard才能看到push后的内容.
