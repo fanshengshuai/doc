@@ -22,6 +22,10 @@ git -reset --hard
 # 增加远程地址
 git remote add origin ssh://git@dev.lemote.com/rt4ls.git
 
+# 默认 pull
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+
 # 把本地仓库提交到远程仓库的master分支中
 git push ssh://git@xxx.com/rt4ls.git master
 git push origin master
