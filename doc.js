@@ -16,3 +16,8 @@ if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) {
 
 // CSS
 $("#objId").css("top", 250);
+
+// 取 cookie
+function getCookie(sName) {
+    var sRE='(?:; )?'+sName+'=([^;]*);?',oRE=new RegExp(sRE);return (oRE.test(document.cookie))?decodeURIComponent(RegExp['$1']):'';
+}
