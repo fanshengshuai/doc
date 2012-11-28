@@ -1,3 +1,10 @@
+# 全局设置
+git config --global user.name 范圣帅
+git config --global user.email fanshengshuai@gmail.com
+git config --global core.editor vim
+git config --global merge.tool vimdiff
+git config --list
+
 # 初始化远程仓库
 git init --bare
 
