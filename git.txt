@@ -3,6 +3,11 @@ git config --global user.name 范圣帅
 git config --global user.email fanshengshuai@gmail.com
 git config --global core.editor vim
 git config --global merge.tool vimdiff
+git config --global color.ui true
+git config --system alias.st status     #git st
+git config --system alias.ci commit   #git commit
+git config --system alias.co checkout  #git co
+git config --system alias.br  branch  #git branch
 git config --list
 
 # 初始化远程仓库
