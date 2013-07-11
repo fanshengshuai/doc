@@ -8,6 +8,7 @@ git config --system alias.st status     #git st
 git config --system alias.ci commit   #git commit
 git config --system alias.co checkout  #git co
 git config --system alias.br  branch  #git branch
+git config core.filemode false # 忽略权限变化
 git config --list
 
 # 初始化远程仓库
