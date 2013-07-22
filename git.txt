@@ -7,37 +7,33 @@ git config --global color.ui true
 git config --system alias.st status     #git st
 git config --system alias.ci commit   #git commit
 git config --system alias.co checkout  #git co
-git config --system alias.br  branch  #git branch
+git config --system alias.br branch  #git branch
 git config core.filemode false # 忽略权限变化
+git config receive.denycurrentbranch ignore # 设置可以 push
+git config branch.master.remote origin # 默认 pull
+git config branch.master.merge refs/heads/master
 git config --list
 
 # 初始化远程仓库
 git init --bare
 
-# 设置可以 push
-git config receive.denycurrentbranch ignore
-
-# 用户设置
-git config user.name 范圣帅
-git config user.email fanshengshuai@gmail.com
-
 # 客户端
 git remote add -f origin fanshengshuai@xxx.xxx.xxx:/www/
-
-git config branch.master.remote origin
 
 # 删除远程地址
 git remote rm origin
 
 # 恢复
-git -reset --hard
+git reset --hard
+
+# 将本地的状态回退到和远程的一样　　　　　　
+git reset --hard origin/master　
 
 # 增加远程地址
 git remote add origin ssh://git@dev.lemote.com/rt4ls.git
 
-# 默认 pull
-git config branch.master.remote origin
-git config branch.master.merge refs/heads/master
+
+
 
 # 把本地仓库提交到远程仓库的master分支中
 git push ssh://git@xxx.com/rt4ls.git master
