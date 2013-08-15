@@ -25,3 +25,9 @@ gzip_comp_level 2;
 gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
 gzip_vary off;
 gzip_disable "MSIE [1-6]\.";
+
+
+vim /etc/nginx/fastcgi_params
+
+client_max_body_size 35m;        #客户端上传文件大小设为35M
+client_body_temp_path /tmp/nginx;        #设置临时目录
