@@ -6,6 +6,11 @@ make install
 
 /etc/nginx/nginx.conf
 
+events {
+	worker_connections  10240;
+	use epoll;
+}
+
 fastcgi_connect_timeout 100;
 fastcgi_send_timeout 100;
 fastcgi_read_timeout 100;
