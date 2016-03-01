@@ -13,12 +13,18 @@ git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
 git config branch.master.merge refs/heads/master
 
+# 配置一个  git lg 用来显示分支图
+git config --global alias.lg "log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
+
 
 git config --global push.default simple 
 git config --list
 
 # 初始化远程仓库
 git init --bare
+
+# 初始化仓库，并启用组共享
+git init --bare --share
 
 # 客户端
 git remote add -f origin fanshengshuai@xxx.xxx.xxx:/www/
