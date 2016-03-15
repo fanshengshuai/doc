@@ -1,13 +1,13 @@
 # 全局设置
-git config --global user.name 范圣帅
-git config --global user.email fanshengshuai@gmail.com
-git config --global core.editor vim
-git config --global merge.tool vimdiff
-git config --global color.ui true
-git config --system alias.st status     #git st
-git config --system alias.ci commit   #git commit
-git config --system alias.co checkout  #git co
-git config --system alias.br branch  #git branch
+sudo git config --global user.name 范圣帅
+sudo git config --global user.email fanshengshuai@gmail.com
+sudo git config --global core.editor vim
+sudo git config --global merge.tool vimdiff
+sudo git config --global color.ui true
+sudo git config --system alias.st status     #git st
+sudo git config --system alias.ci commit   #git commit
+sudo sudo git config --system alias.co checkout  #git co
+sudo git config --system alias.br branch  #git branch
 git config core.filemode false # 忽略权限变化
 git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
