@@ -44,6 +44,7 @@ git remote add origin ssh://git@dev.lemote.com/rt4ls.git
 # 导入svn到GIT
 先制作 user.txt
 svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u |  perl -pe 's/<author>(.*?)<\/author>/$1 = /' > user.txt
+git svn clone svn://xxxxx/trunk --no-metadata --localtime  --authors-file=user.txt
 
 
 
