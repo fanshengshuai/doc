@@ -14,50 +14,48 @@ git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
 git config branch.master.merge refs/heads/master
 # 配置一个git lg 用来显示分支图
-git config --global alias.lg "log --graph --all \
-	--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-	--abbrev-commit --date=relative" 
+git config --global alias.lg "log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
 git config --global push.default simple 
 git config --list
 ```
 
 ##### 初始化远程仓库
-```
+```shell
 git init --bare
 ```
 ##### 初始化仓库，并启用组共享
-```
+```shell
 git init --bare --share
 ```
 
 ##### 客户端
-```
+```shell
 git remote add -f origin fanshengshuai@xxx.xxx.xxx:/www/
 ```
 
 ##### 删除远程地址
-```
+```shell
 git remote rm origin
 ```
 
 ##### 恢复
-```
+```shell
 git reset --hard
 ```
 
 ##### 将本地的状态回退到和远程的一样　　　　　　
-```
+```shell
 git reset --hard origin/master　
 ```
 
 ##### 增加远程地址
-```
+```shell
 git remote add origin ssh://git@dev.lemote.com/rt4ls.git
 ```
 
 ##### 导入svn到GIT
 
-```
+```shell
 # 先制作 user.txt
 svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u \
 	|  perl -pe 's/<author>(.*?)<\/author>/$1 = /' > user.txt
@@ -68,7 +66,7 @@ git svn clone svn://xxxxx/trunk --no-metadata --localtime  --authors-file=user.t
 
 
 ##### 把本地仓库提交到远程仓库的master分支中
-```
+```shell
 git push ssh://git@xxx.com/rt4ls.git master
 git push origin master
 ```
@@ -77,19 +75,19 @@ Git 和Github初次使用
 <http://apps.hi.baidu.com/share/detail/42643392>
 
 ##### 提交本地test分支作为远程的master分支
-```
+```shell
 git push origin test:master
 ```
 
 ##### 提交本地test分支作为远程的test分支
-```
+```shell
 git push origin test:test
 ```
 
 如果想删除远程的分支呢？类似于上面，如果:左边的分支为空，那么将删除:右边的远程的分支。
 
 
-```
+```shell
 # 刚提交到远程的test将被删除，但是本地还会保存的，不用担心
 git push origin :test
 ```
@@ -110,7 +108,7 @@ git push origin :test
 
 ### Create a new repository on the command line
 
-```
+```shell
 touch README.md
 git init
 git add README.md
@@ -120,7 +118,7 @@ git push -u origin master
 ```
 
 ### Push an existing repository from the command line
-```
+```shell
 git remote add origin https://github.com/fanshengshuai/vim.git
 git push -u origin master
 ```
