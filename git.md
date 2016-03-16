@@ -1,4 +1,5 @@
-# 全局设置
+##### 全局设置
+```bash
 sudo git config --global user.name 范圣帅
 sudo git config --global user.email fanshengshuai@gmail.com
 sudo git config --global core.editor vim
@@ -12,65 +13,91 @@ git config core.filemode false # 忽略权限变化
 git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
 git config branch.master.merge refs/heads/master
-
-# 配置一个  git lg 用来显示分支图
+# 配置一个git lg 用来显示分支图
 git config --global alias.lg "log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
-
-
 git config --global push.default simple 
 git config --list
+```
 
-# 初始化远程仓库
+##### 初始化远程仓库
+```
 git init --bare
-
-# 初始化仓库，并启用组共享
+```
+##### 初始化仓库，并启用组共享
+```
 git init --bare --share
+```
 
-# 客户端
+##### 客户端
+```
 git remote add -f origin fanshengshuai@xxx.xxx.xxx:/www/
+```
 
-# 删除远程地址
+##### 删除远程地址
+```
 git remote rm origin
+```
 
-# 恢复
+##### 恢复
+```
 git reset --hard
+```
 
-# 将本地的状态回退到和远程的一样　　　　　　
+##### 将本地的状态回退到和远程的一样　　　　　　
+```
 git reset --hard origin/master　
+```
 
-# 增加远程地址
+##### 增加远程地址
+```
 git remote add origin ssh://git@dev.lemote.com/rt4ls.git
+```
 
-# 导入svn到GIT
-先制作 user.txt
+##### 导入svn到GIT
+
+```
+# 先制作 user.txt
 svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u |  perl -pe 's/<author>(.*?)<\/author>/$1 = /' > user.txt
+# 导入svn
 git svn clone svn://xxxxx/trunk --no-metadata --localtime  --authors-file=user.txt
+```
 
 
 
-
-# 把本地仓库提交到远程仓库的master分支中
+##### 把本地仓库提交到远程仓库的master分支中
+```
 git push ssh://git@xxx.com/rt4ls.git master
 git push origin master
+```
 
 Git 和Github初次使用
-http://apps.hi.baidu.com/share/detail/42643392
+<http://apps.hi.baidu.com/share/detail/42643392>
 
-# 提交本地test分支作为远程的master分支
+##### 提交本地test分支作为远程的master分支
+```
 git push origin test:master
+```
 
-# 提交本地test分支作为远程的test分支
+##### 提交本地test分支作为远程的test分支
+```
 git push origin test:test
+```
 
 如果想删除远程的分支呢？类似于上面，如果:左边的分支为空，那么将删除:右边的远程的分支。
 
+
+```
 # 刚提交到远程的test将被删除，但是本地还会保存的，不用担心
 git push origin :test
+```
 
 在初始化远程仓库时最好使用 git --bare init   而不要使用：git init，如果使用了git init初始化，则远程仓库的目录下，也包含work tree，当本地仓库向远程仓库push时,   如果远程仓库正在push的分支上（如果当时不在push的分支，就没有问题）, 那么push后的结果不会反应在work tree上,  也即在远程仓库的目录下对应的文件还是之前的内容，必须得使用git reset --hard才能看到push后的内容.
 
-# Pull is not possible because you have unmerged files.
-	本地的push和merge会形成MERGE-HEAD(FETCH-HEAD), HEAD（PUSH-HEAD）这样的引用。HEAD代表本地最近成功push后形成的引用。MERGE-HEAD表示成功pull后形成的引用。可以通过MERGE-HEAD或者HEAD来实现类型与svn revet的效果。
+
+> Pull is not possible because you have unmerged files.
+
+    本地的push和merge会形成MERGE-HEAD(FETCH-HEAD), HEAD（PUSH-HEAD）这样的引用。HEAD代表本地最近成功push后形成的引用。MERGE-HEAD表示成功pull后形成的引用。可以通过MERGE-HEAD或者HEAD来实现类型与svn revet的效果。
+
 	解决：
 	1.将本地的冲突文件冲掉，不仅需要reset到MERGE-HEAD或者HEAD,还需要--hard。没有后面的hard，不会冲掉本地工作区。只会冲掉stage区。
 	git reset --hard FETCH_HEAD
@@ -78,15 +105,19 @@ git push origin :test
 	2.git pull就会成功。
 
 
-# Create a new repository on the command line
+### Create a new repository on the command line
 
+```
 touch README.md
 git init
 git add README.md
 git commit -m "first commit"
 git remote add origin git@github.com:fanshengshuai/vim.git
 git push -u origin master
+```
 
-# Push an existing repository from the command line
+### Push an existing repository from the command line
+```
 git remote add origin https://github.com/fanshengshuai/vim.git
 git push -u origin master
+```
