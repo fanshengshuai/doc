@@ -14,7 +14,9 @@ git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
 git config branch.master.merge refs/heads/master
 # 配置一个git lg 用来显示分支图
-git config --global alias.lg "log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" 
+git config --global alias.lg "log --graph --all \
+	--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+	--abbrev-commit --date=relative" 
 git config --global push.default simple 
 git config --list
 ```
@@ -57,7 +59,8 @@ git remote add origin ssh://git@dev.lemote.com/rt4ls.git
 
 ```
 # 先制作 user.txt
-svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u |  perl -pe 's/<author>(.*?)<\/author>/$1 = /' > user.txt
+svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u \
+	|  perl -pe 's/<author>(.*?)<\/author>/$1 = /' > user.txt
 # 导入svn
 git svn clone svn://xxxxx/trunk --no-metadata --localtime  --authors-file=user.txt
 ```
