@@ -10,6 +10,8 @@ sudo git config --system alias.ci commit   #git commit
 sudo sudo git config --system alias.co checkout  #git co
 sudo git config --system alias.br branch  #git branch
 git config core.filemode false # 忽略权限变化
+git config --global core.autocrlf false # 换行符
+git config --global core.safecrlf true # 检查换行符
 git config receive.denycurrentbranch ignore # 设置可以 push
 git config branch.master.remote origin # 默认 pull
 git config branch.master.merge refs/heads/master
