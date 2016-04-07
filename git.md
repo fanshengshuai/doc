@@ -50,6 +50,16 @@ git fetch origin branch-name
 git reset --hard origin/branch-name
 ```
 
+##### git 删除历史纪录中的某些文件
+	https://git-scm.com/book/zh/v2/Git-工具-重写历史#核弹级选项:-filter-branch
+```
+# --prune-empty 表示如果修改后的提交为空则扔掉不要
+# 
+git filter-branch --tree-filter 'rm -rf lib/flib' --prune-empty --
+git push --force
+
+```
+
 ##### 将本地的状态回退到和远程的一样　　　　　　
 ```shell
 git reset --hard origin/master　
