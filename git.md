@@ -54,9 +54,14 @@ git reset --hard origin/branch-name
 	https://git-scm.com/book/zh/v2/Git-工具-重写历史#核弹级选项:-filter-branch
 ```
 # --prune-empty 表示如果修改后的提交为空则扔掉不要
-# 
+# --all 是针对所有分支
+# 正则批评要删除的文件，可以用 --index-filter ‘git rm --cached --ignore-unmatch *.jar’
 git filter-branch --tree-filter 'rm -rf lib/flib' --prune-empty --
 git push --force
+
+# 修改纪录中的 提交者 和 email
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Newname'; GIT_AUTHOR_EMAIL='newemail'; GIT_COMMITTER_NAME='Newname'; GIT_COMMITTER_EMAIL='newemail';" HEAD
+
 
 ```
 
