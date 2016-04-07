@@ -1,13 +1,13 @@
 ##### 全局设置
 ```bash
-sudo git config --global user.name 范圣帅
-sudo git config --global user.email fanshengshuai@gmail.com
-sudo git config --global core.editor vim
-sudo git config --global merge.tool vimdiff
-sudo git config --global color.ui true
+git config --global user.name 范圣帅
+git config --global user.email fanshengshuai@gmail.com
+git config --global core.editor vim
+git config --global merge.tool vimdiff
+git config --global color.ui true
 sudo git config --system alias.st status     #git st
 sudo git config --system alias.ci commit   #git commit
-sudo sudo git config --system alias.co checkout  #git co
+sudo git config --system alias.co checkout  #git co
 sudo git config --system alias.br branch  #git branch
 git config core.filemode false # 忽略权限变化
 git config --global core.autocrlf false # 换行符
@@ -43,6 +43,11 @@ git remote rm origin
 ##### 恢复
 ```shell
 git reset --hard
+```
+##### 恢复所有没有push的本地commit
+```
+git fetch origin branch-name 
+git reset --hard origin/branch-name
 ```
 
 ##### 将本地的状态回退到和远程的一样　　　　　　
