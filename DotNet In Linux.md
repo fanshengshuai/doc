@@ -13,10 +13,14 @@
 ##### 安装
 
 ```bash
-yum -y install wget glib2-devel libtiff libtiff-devel libjpeg libjpeg-devel giflib giflib-devel libpng libpng-devel libX11 libX11-devel freetype freetype-devel fontconfig fontconfig-devel libexif libexif-devel gcc-c++ gettext unzip zip bzip2 bzip2-devel curl-devel gtk2-devel boost-devel
-yum -y install yum-utils
+yum -y install wget glib2-devel libtiff libtiff-devel libjpeg \
+      libjpeg-devel giflib giflib-devel libpng libpng-devel libX11 \
+      libX11-devel freetype freetype-devel fontconfig fontconfig-devel \
+      libexif libexif-devel gcc-c++ gettext unzip zip bzip2 bzip2-devel \
+      curl-devel gtk2-devel boost-devel;
+yum -y install yum-utils;
 yum –y install mono-complete.x86_64 # 安装所有的软件包
-yum install -y dejavu-sans-mono-fonts # 安装字体
+yum install -y dejavu-fonts-common dejavu-sans-mono-fonts dejavu-lgc-sans-mono-fonts  # 安装字体
 rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
 yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
 ```
