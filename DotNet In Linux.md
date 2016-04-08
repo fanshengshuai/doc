@@ -26,10 +26,15 @@ yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
 ```
 
 ```bash
-cd /tmp
 mkdir -p /data/software; cd /data/software;
 wget linuxdot.net/down/jexus-5.8.1.tar.gz 
 tar -zxvf jexus-5.8.1.tar.gz 
 cd jexus-5.8.1 
 sudo ./install 
+```
+
+
+```
+# install mysql.dll or xxxx.dll in dir
+for f in `ls *.dll`;do gacutil -i $f;done;
 ```
