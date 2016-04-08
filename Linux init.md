@@ -1,3 +1,6 @@
+
+# !!IMPORTANT 以下命令只用于 CentOS 7
+
 ```sh
 yum install -y mailx setuptool ntsysv system-config-firewall-tui system-config-network-tui \
               wget curl screen unzip vim rsync openssh-clients ntpdate screen 
