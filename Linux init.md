@@ -7,7 +7,7 @@ yum update
 
 
 echo -e '* soft nofile 20000\n* hard nofile 20000\nroot soft nofile 20000\nroot hard nofile 20000' >> /etc/security/limits.conf;
-echo -e 'net.core.somaxconn=8192\nnet.ipv4.tcp_syncookies=1\nnet.ipv4.tcp_tw_reuse=1\nnet.ipv4.tcp_tw_recycle=1\nnet.ipv4.tcp_fin_timeout=20\nnet.ipv4.tcp_keepalive_time=1200\nnet.ipv4.tcp_max_syn_backlog=8192\nnet.ipv4.tcp_max_tw_buckets=5000\nnet.ipv4.ip_conntrack_max = 10240' >> /etc/sysctl.conf;
+echo -e 'net.core.somaxconn=8192\nnet.ipv4.tcp_syncookies=1\nnet.ipv4.tcp_tw_reuse=1\nnet.ipv4.tcp_tw_recycle=1\nnet.ipv4.tcp_fin_timeout=20\nnet.ipv4.tcp_keepalive_time=1200\nnet.ipv4.tcp_max_syn_backlog=8192\nnet.ipv4.tcp_max_tw_buckets=5000\nnet.nf_conntrack_max = 655360\nnet.netfilter.nf_conntrack_tcp_timeout_established = 36000' >> /etc/sysctl.conf;
 sysctl -p
 ```
 
