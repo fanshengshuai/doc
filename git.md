@@ -85,6 +85,11 @@ svn log --xml svn://xxxxx/trunk |grep "<author" | sort -u \
 git svn clone svn://xxxxx/trunk --no-metadata --localtime  --authors-file=user.txt
 ```
 
+##### GIT导出代码
+```sh
+git archive --format zip --output "../archive.zip" master -0
+```
+
 
 
 ##### 把本地仓库提交到远程仓库的master分支中
