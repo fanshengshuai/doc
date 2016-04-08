@@ -24,6 +24,25 @@ iptables的链接跟踪表最大容量为/proc/sys/net/ipv4/ip_conntrack_max，�
     net.ipv4.netfilter.ip_conntrack_tcp_timeout_close_wait = 60
     net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait = 120 
 
+
+in CentOS 7, should be:
+```
+net.core.somaxconn = 8192
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_fin_timeout = 20
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.tcp_max_syn_backlog = 8192
+net.ipv4.tcp_max_tw_buckets = 5000
+net.nf_conntrack_max = 393216
+net.netfilter.nf_conntrack_max = 393216
+net.netfilter.nf_conntrack_tcp_timeout_established = 300
+net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120
+net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60
+net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120
+```
+
 上面两种方法打个比喻就是烧水水开的时候，换一个大锅。一般情况下都可以解决问题，但是在极端情况下，还是不够用，怎么办？ 
 
 这样就得反其道而行，用釜底抽薪的办法。iptables的raw表是不做数据包的链接跟踪处理的，我们就把那些连接量非常大的链接加入到iptables raw表。 
