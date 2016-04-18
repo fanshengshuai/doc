@@ -149,3 +149,25 @@ git push -u origin master
 git remote add origin https://github.com/fanshengshuai/vim.git
 git push -u origin master
 ```
+
+
+### GIT 针对不同分支，启用不同的RSA KEY
+```sh
+touch ~/.ssh/config
+chmod 600 ~/.ssh/config
+vim ~/.ssh/config
+```
+放入以下内容
+```sh
+Host VPSMate.github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_vps_mate_github_com
+```
+然后，更改 GIT 的 remote
+```
+git remote rm origin
+git remote add origin git@VPSMate.github.com:fanshengshuai/VPSMate.git
+git push --all
+```
+  
