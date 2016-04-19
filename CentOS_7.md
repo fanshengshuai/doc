@@ -45,4 +45,6 @@ firewall-cmd --permanent --zone=public --add-rich-rule="rule family="ipv4" \
 firewall-cmd --permanent --zone=public --add-rich-rule="rule family="ipv4" \
      source address="192.168.0.4/24" \
      port protocol="tcp" port="8080" accept"   
+# 安装编译工具
+yum groupinstall "Development Tools"
 ```
